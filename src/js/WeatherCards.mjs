@@ -1,4 +1,4 @@
-import { renderListWithTemplate, renderWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate } from "./utils.mjs";
 
 function weatherTemplate(element) {
     return `

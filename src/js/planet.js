@@ -3,7 +3,6 @@ import ImagesListning from "./ImageListning.mjs";
 import ExternalServices from "./ExternalServices";
 import WeatherCards from "./WeatherCards.mjs";
 
-
 const dataSource = new ExternalServices();
 
 const planet = getParam("name");

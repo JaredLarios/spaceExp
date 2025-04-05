@@ -24,10 +24,18 @@ export default class ExternalServices {
 
   async getWeather(planet) {
     let url = `${baseNasaURL}/insight_weather/?api_key=${nasaKey}&feedtype=json&ver=1.0`;
-    let myFunction = (e) => ({ temp: e[firstKey(e)].AT.av, min: e[firstKey(e)].AT.mn, max: e[firstKey(e)].AT.mx });
-    if(planet == "earth") {
-      url = `${baseOpenWeatherURL}/data/2.5/weather?appid=${openWeatherKey}&q=guatemala`
-      myFunction = (e) => ({ temp: e.main.temp, min: e.main.temp_min, max: e.main.temp_max});
+    let myFunction = (e) => ({
+      temp: e[firstKey(e)].AT.av,
+      min: e[firstKey(e)].AT.mn,
+      max: e[firstKey(e)].AT.mx,
+    });
+    if (planet == "earth") {
+      url = `${baseOpenWeatherURL}/data/2.5/weather?appid=${openWeatherKey}&q=guatemala`;
+      myFunction = (e) => ({
+        temp: e.main.temp,
+        min: e.main.temp_min,
+        max: e.main.temp_max,
+      });
     }
     const response = await fetch(url);
     const data = await convertToJson(response);
