@@ -21,6 +21,11 @@
   --large-font: 1.2em;
 }
 
+h1, h2, h3, h4 {
+  font-family: var(--font-headline);
+  font-weight: 200;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--black);
@@ -35,6 +40,11 @@ body {
 
 .flex {
   display: flex;
+  gap: 2rem;
+}
+
+.grid {
+  display: grid;
   gap: 2rem;
 }
 
@@ -145,3 +155,44 @@ header {
   width: 150px;
 }
 /* End Viewl List style */
+
+/* Mars Galery */
+.rover__galery{
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.rover__card {
+  display: flex;
+  flex-direction: column;
+  border: 1px white solid;
+  padding: 1.5rem;
+  border-radius: 20px;
+}
+
+.rover__card img {
+  max-height: 250px;
+  object-fit: contain;
+}
+
+/* End Mars Galery */
+.weather__card {
+  padding: 1rem 2rem;
+  margin: 1rem 2rem;
+  display: flex;
+  justify-content:space-around;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.temperature {
+  border: 1px solid white;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+}
+
+.season {
+  border: 1px solid white;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+}
+/* Mars Weather */
