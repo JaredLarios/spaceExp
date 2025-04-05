@@ -1,3 +1,11 @@
+export function getParam(param) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const query = urlParams.get(param);
+
+  return query;
+}
+
 export function renderWithTemplate(template, parent, data, callback) {
     parent.insertAdjacentHTML("afterbegin", template);
     callback && callback(data);
@@ -18,4 +26,20 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
+}
+
+// Render a list of templates
+export function renderListWithTemplate(
+  templateFunction,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false,
+) {
+  const listElements = list.map(templateFunction);
+
+  // if clear is true clear DOM
+  clear && (parentElement.innerHtml = "");
+
+  parentElement.insertAdjacentHTML(position, listElements.join(""));
 }
