@@ -62,8 +62,8 @@ export default class ExternalServices {
             name: data.caption,
           },
         }),
-      }
-    }
+      },
+    };
 
     const config = configs[planet];
     if (!config) {
@@ -75,14 +75,15 @@ export default class ExternalServices {
       const data = await convertToJson(response);
 
       if (planet === "earth") {
-        const promises = data.map(element => serializeData(element, config.transform));
+        const promises = data.map((element) =>
+          serializeData(element, config.transform),
+        );
         return Promise.all(promises);
       }
 
       return serializeData(data, config.transform);
     } catch (error) {
-      console.log(`Error fetching ${planet} photos:`, error);
-      throw error;
+      throw new Error(error);
     }
   }
 }
