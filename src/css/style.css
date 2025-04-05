@@ -131,7 +131,7 @@ header {
 }
 
 .hero__buttons button {
-
+  
 }
 /* End Hero style */
 
@@ -139,6 +139,7 @@ header {
 .viewlist {
   display: flex;
   gap: 1rem;
+  justify-content: center;
 }
 .viewlist__card img {
   width: 150px;
