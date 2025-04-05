@@ -43,3 +43,7 @@ export function renderListWithTemplate(
 
   parentElement.insertAdjacentHTML(position, listElements.join(""));
 }
+
+export function firstKey(data) {
+  return Object.keys(data)[0];
+}
