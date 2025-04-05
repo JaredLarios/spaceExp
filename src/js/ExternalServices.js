@@ -1,4 +1,4 @@
-import { firstKey } from "./utils.mjs";
+import { firstKey, getLastWeekDate } from "./utils.mjs";
 
 const baseNasaURL = import.meta.env.VITE_NASA_URL;
 const nasaKey = import.meta.env.VITE_NASA_KEY;
@@ -44,17 +44,45 @@ export default class ExternalServices {
     return serializeResponse;
   }
 
-  async getRoverMarsPhotos() {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-    currentDate.setDate(currentDate.getDate() - 1);
-    const day = currentDate.getDate();
+  async getPhotos(planet) {
+    const { year, month, day } = getLastWeekDate();
 
-    const response = await fetch(
-      `${baseNasaURL}/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${year}-${month}-${day}&api_key=${nasaKey}`,
-    );
-    const data = await convertToJson(response);
-    return data.photos;
+    const configs = {
+      mars: {
+        url: `${baseNasaURL}/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${year}-${month}-${day}&api_key=${nasaKey}`,
+        transform: (data) => data.photos,
+      },
+      earth: {
+        url: `${baseNasaURL}/EPIC/api/natural/date/${year}-${month}-${day}?api_key=${nasaKey}`,
+        transform: (data) => ({
+          id: data.identifier,
+          img_src: `${baseNasaURL}/EPIC/archive/natural/${year}/${month}/${day}/png/${data.image}.png?api_key=${nasaKey}`,
+          earth_date: data.date,
+          camera: {
+            name: data.caption,
+          },
+        }),
+      }
+    }
+
+    const config = configs[planet];
+    if (!config) {
+      throw new Error(`Invalid planet`);
+    }
+
+    try {
+      const response = await fetch(config.url);
+      const data = await convertToJson(response);
+
+      if (planet === "earth") {
+        const promises = data.map(element => serializeData(element, config.transform));
+        return Promise.all(promises);
+      }
+
+      return serializeData(data, config.transform);
+    } catch (error) {
+      console.log(`Error fetching ${planet} photos:`, error);
+      throw error;
+    }
   }
 }

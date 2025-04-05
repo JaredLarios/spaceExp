@@ -21,7 +21,7 @@ export default class ImagesListning {
         this.template = template;
     }
     async init() {
-        const myList = await this.dataSource.getRoverMarsPhotos();
+        const myList = await this.dataSource.getPhotos(this.planet);
 
         const nameElements = document.querySelectorAll(".planet-name");
         nameElements.forEach((element) => element.textContent = this.planet);

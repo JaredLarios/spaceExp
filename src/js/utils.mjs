@@ -47,3 +47,14 @@ export function renderListWithTemplate(
 export function firstKey(data) {
   return Object.keys(data)[0];
 }
+
+
+export function getLastWeekDate() {
+  const currentDate = new Date();
+  const year = String(currentDate.getFullYear()).padStart(2, "0");
+  currentDate.setDate(currentDate.getDate() - 7);
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+  const day = String(currentDate.getDate()).padStart(2, "0");
+
+  return { year, month, day }
+}
