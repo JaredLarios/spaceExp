@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
   --font-body: "Space Mono", monospace;
@@ -21,7 +21,10 @@
   --large-font: 1.2em;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-headline);
   font-weight: 200;
 }
@@ -118,7 +121,6 @@ header {
 }
 /* End Icon Style */
 
-
 /* Hero style */
 .hero {
   position: relative;
@@ -145,7 +147,6 @@ header {
 }
 
 .hero__buttons button {
-  
 }
 /* End Hero style */
 
@@ -158,14 +159,18 @@ header {
 .viewlist__card img {
   width: 150px;
 }
+.viewlist__card a {
+  text-decoration: none;
+  color: white;
+}
 /* End Viewl List style */
 
 /* Mars Galery */
-.rover__galery{
+.planet__galery {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.rover__card {
+.planet__card {
   display: flex;
   flex-direction: column;
   border: 1px white solid;
@@ -173,7 +178,9 @@ header {
   border-radius: 20px;
 }
 
-.rover__card img {
+
+
+.planet__card img {
   max-height: 250px;
   object-fit: contain;
 }
@@ -183,9 +190,10 @@ header {
   padding: 1rem 2rem;
   margin: 1rem 2rem;
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
   width: 50%;
   margin: 0 auto;
+  gap: 2rem;
 }
 
 .temperature {
