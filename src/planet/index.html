@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="/js/mars.js" type="module"></script>
+    <script src="/js/planet.js" type="module"></script>
   </head>
   <body>
     <header id="main-header"></header>
     <main class="divider">
-      <section id="app">
-        <div class="rover__card">
-          <img src="" alt="rover" class="rover__image" />
-          <span class="rover__camara">Camara</span>
-        </div>
+      <section class="weather__card">
+        <h2>Weather of <span class="planet-name highlight"></span></h2>
+        <div class="temperature"></div>
+        <div id="season"></div>
       </section>
+      <h2>Photos of <span class="planet-name highlight"></span></h2>
+      <section class="grid planet__galery"></section>
     </main>
     <footer id="main-footer"></footer>
   </body>

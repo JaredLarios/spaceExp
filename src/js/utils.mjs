@@ -1,3 +1,11 @@
+export function getParam(param) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const query = urlParams.get(param);
+
+  return query;
+}
+
 export function renderWithTemplate(template, parent, data, callback) {
     parent.insertAdjacentHTML("afterbegin", template);
     callback && callback(data);
@@ -18,4 +26,35 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
+}
+
+// Render a list of templates
+export function renderListWithTemplate(
+  templateFunction,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false,
+) {
+  const listElements = list.map(templateFunction);
+
+  // if clear is true clear DOM
+  clear && (parentElement.innerHtml = "");
+
+  parentElement.insertAdjacentHTML(position, listElements.join(""));
+}
+
+export function firstKey(data) {
+  return Object.keys(data)[0];
+}
+
+
+export function getLastWeekDate() {
+  const currentDate = new Date();
+  const year = String(currentDate.getFullYear()).padStart(2, "0");
+  currentDate.setDate(currentDate.getDate() - 7);
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+  const day = String(currentDate.getDate()).padStart(2, "0");
+
+  return { year, month, day }
 }

@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
   --font-body: "Space Mono", monospace;
@@ -21,10 +21,22 @@
   --large-font: 1.2em;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-headline);
+  font-weight: 200;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--black);
   color: white;
+}
+
+main {
+  padding: 1rem 2rem;
 }
 
 /* Class based disegn */
@@ -35,6 +47,11 @@ body {
 
 .flex {
   display: flex;
+  gap: 2rem;
+}
+
+.grid {
+  display: grid;
   gap: 2rem;
 }
 
@@ -104,7 +121,6 @@ header {
 }
 /* End Icon Style */
 
-
 /* Hero style */
 .hero {
   position: relative;
@@ -131,7 +147,6 @@ header {
 }
 
 .hero__buttons button {
-  
 }
 /* End Hero style */
 
@@ -144,4 +159,50 @@ header {
 .viewlist__card img {
   width: 150px;
 }
+.viewlist__card a {
+  text-decoration: none;
+  color: white;
+}
 /* End Viewl List style */
+
+/* Mars Galery */
+.planet__galery {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.planet__card {
+  display: flex;
+  flex-direction: column;
+  border: 1px white solid;
+  padding: 1.5rem;
+  border-radius: 20px;
+}
+
+.planet__card img {
+  max-height: 250px;
+  object-fit: contain;
+}
+
+/* End Mars Galery */
+.weather__card {
+  padding: 1rem 2rem;
+  margin: 1rem 2rem;
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.temperature {
+  border: 1px solid white;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+}
+
+.season {
+  border: 1px solid white;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+}
+/* Mars Weather */
