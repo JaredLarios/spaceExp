@@ -28,6 +28,11 @@ export default class ExternalServices {
       temp: e[firstKey(e)].AT.av,
       min: e[firstKey(e)].AT.mn,
       max: e[firstKey(e)].AT.mx,
+      season: {
+        season: e[firstKey(e)].Season,
+        south_season: e[firstKey(e)].Southern_season,
+        north_season: e[firstKey(e)].Northern_season,
+      },
     });
     if (planet == "earth") {
       url = `${baseOpenWeatherURL}/data/2.5/weather?appid=${openWeatherKey}&q=guatemala`;

@@ -9,8 +9,14 @@ const planet = getParam("name");
 
 const galery = document.querySelector(".planet__galery");
 const tempElement = document.querySelector(".temperature");
+const sesonElement = document.querySelector("#season");
 const imageList = new ImagesListning(planet, dataSource, galery);
-const weatherCard = new WeatherCards(planet, dataSource, tempElement);
+const weatherCard = new WeatherCards(
+  planet,
+  dataSource,
+  tempElement,
+  sesonElement,
+);
 
 weatherCard.init();
 imageList.init();
