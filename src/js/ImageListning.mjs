@@ -11,7 +11,7 @@ function imageCardTemaplate(element) {
 
 export default class ImagesListning {
     constructor(
-            planet,
+            planet = "earth",
             dataSource,
             parentElement,
             template = imageCardTemaplate) {
@@ -21,7 +21,7 @@ export default class ImagesListning {
         this.template = template;
     }
     async init() {
-        const myList = await this.dataSource.getPhotos(this.planet);
+        const myList = await this.dataSource.getPlanetPhotos(this.planet);
 
         const nameElements = document.querySelectorAll(".planet-name");
         nameElements.forEach((element) => element.textContent = this.planet);
@@ -30,5 +30,9 @@ export default class ImagesListning {
     }
     renderList(list) {
         renderListWithTemplate(this.template, this.parentElement, list);
+    }
+    async renderSingle() {
+        const data = await this.dataSource.getDailyPhoto();
+        renderListWithTemplate(this.template, this.parentElement, [data])
     }
 }

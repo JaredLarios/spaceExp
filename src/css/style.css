@@ -182,8 +182,24 @@ header {
   max-height: 250px;
   object-fit: contain;
 }
-
 /* End Mars Galery */
+
+/* Daily Image */
+.daily .planet__card {
+  width: 60vw;
+  margin: 0 auto;
+}
+.daily .planet__card span {
+  width: 55vw;
+  margin: auto;
+  padding: 1rem;
+}
+.daily .planet__card img {
+  max-height: 450px;
+}
+/* End Daily Image */
+
+/* Mars Weather */
 .weather__card {
   padding: 1rem 2rem;
   margin: 1rem 2rem;
@@ -205,4 +221,4 @@ header {
   padding: 1rem 2rem;
   border-radius: 20px;
 }
-/* Mars Weather */
+/* End Mars Weather */
