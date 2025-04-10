@@ -7,10 +7,10 @@ const dataSource = new ExternalServices();
 
 const planet = getParam("name");
 
-const galery = document.querySelector(".planet__galery");
+const gallery = document.querySelector(".planet__gallery");
 const tempElement = document.querySelector(".temperature");
 const sesonElement = document.querySelector("#season");
-const imageList = new ImagesListning(planet, dataSource, galery);
+const imageList = new ImagesListning(planet, dataSource, gallery);
 const weatherCard = new WeatherCards(
   planet,
   dataSource,

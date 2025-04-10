@@ -49,7 +49,7 @@ export default class ExternalServices {
     return serializeResponse;
   }
 
-  async getPhotos(planet) {
+  async getPlanetPhotos(planet) {
     const { year, month, day } = getLastWeekDate();
 
     const configs = {
@@ -60,7 +60,7 @@ export default class ExternalServices {
       earth: {
         url: `${baseNasaURL}/EPIC/api/natural/date/${year}-${month}-${day}?api_key=${nasaKey}`,
         transform: (data) => ({
-          id: data.identifier,
+          id: Number(data.identifier),
           img_src: `${baseNasaURL}/EPIC/archive/natural/${year}/${month}/${day}/png/${data.image}.png?api_key=${nasaKey}`,
           earth_date: data.date,
           camera: {
@@ -89,6 +89,27 @@ export default class ExternalServices {
       return serializeData(data, config.transform);
     } catch (error) {
       throw new Error(error);
+    }
+  }
+
+  async getDailyPhoto() {
+    try {
+      const response = await fetch(
+        `${baseNasaURL}/planetary/apod?api_key=${nasaKey}`,
+      );
+      const data = await convertToJson(response);
+      const dateId = new Date(data.date);
+
+      return serializeData(data, (element) => ({
+        id: Number(dateId),
+        img_src: element.url,
+        earth_date: element.date,
+        camera: {
+          name: element.explanation,
+        },
+      }));
+    } catch (error) {
+      console.log(error);
     }
   }
 }

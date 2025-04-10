@@ -1,3 +1,15 @@
+export function getLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
+export function setLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+export function removeLocalStorage(key) {
+  localStorage.removeItem(key);
+}
+
 export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -17,6 +29,12 @@ export async function loadTemplate(path) {
   return tempalte;
 }
 
+function updateFavNumber() {
+  const counter = document.querySelector("#favCount");
+  const number = getLocalStorage("so-favs").length || [];
+  counter.textContent = number;
+}
+
 export async function loadHeaderFooter() {
   const headerTemplate = await loadTemplate("/partials/header.html");
   const footerTemplate = await loadTemplate("/partials/footer.html");
@@ -26,6 +44,8 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
+
+  updateFavNumber();
 }
 
 // Render a list of templates

@@ -6,18 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="/js/planet.js" type="module"></script>
+    <script src="/js/daily" type="module"></script>
   </head>
   <body>
     <header id="main-header"></header>
     <main class="divider">
-      <section class="weather__card">
-        <h2>Weather of <span class="planet-name highlight"></span></h2>
-        <div class="temperature"></div>
-        <div id="season"></div>
-      </section>
-      <h2>Photos of <span class="planet-name highlight"></span></h2>
-      <section class="grid planet__gallery"></section>
+      <h2>Daily Image <span class="daily__date"></span></h2>
+      <section class="daily planet__gallery"></section>
     </main>
     <footer id="main-footer"></footer>
   </body>
