@@ -186,8 +186,8 @@ header {
 }
 /* End Viewl List style */
 
-/* Mars Galery */
-.planet__galery {
+/* Mars gallery */
+.planet__gallery {
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -203,7 +203,7 @@ header {
   max-height: 250px;
   object-fit: contain;
 }
-/* End Mars Galery */
+/* End Mars gallery */
 
 /* Daily Image */
 .daily .planet__card {

@@ -5,7 +5,7 @@ import { loadHeaderFooter } from "./utils.mjs";
 
 const dataSource = new ExternalServices();
 
-const galertyElement = document.querySelector(".planet__galery");
+const galertyElement = document.querySelector(".planet__gallery");
 const dateElement = document.querySelector(".daily__date");
 
 dateElement.textContent = new Date().toDateString();
