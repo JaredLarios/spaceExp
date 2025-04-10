@@ -83,11 +83,9 @@ export default class ExternalServices {
         const promises = data.map((element) =>
           serializeData(element, config.transform),
         );
-        console.log(await Promise.all(promises))
         return Promise.all(promises);
       }
 
-      console.log(await serializeData(data, config.transform))
       return serializeData(data, config.transform);
     } catch (error) {
       throw new Error(error);

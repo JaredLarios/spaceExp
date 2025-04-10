@@ -1,10 +1,9 @@
 export function getLocalStorage(key) {
-  const data = localStorage.getItem(key);
-  return JSON.parse(data);
+  return JSON.parse(localStorage.getItem(key));
 }
 
 export function setLocalStorage(key, value) {
-  localStorage.setItem(key, value);
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
 export function removeLocalStorage(key) {

@@ -58,12 +58,15 @@ export default class ImagesListning {
         listButtons.forEach(button => {
             button.addEventListener("click", (e) => {
                 const id = e.target.dataset.id;
-                const item = list.find(element => element.id === Number(id));
-                console.log(item);
-                /*
-                const favsSave = getLocalStorage("so-favs") || [];
-                setLocalStorage("so-favs", favsSave);*/
+                this.saveImageCard(id, list);
             })
         });
+    }
+
+    saveImageCard(id, list) {
+        const item = list.find(element => element.id === Number(id));
+        const favsSaved = getLocalStorage("so-favs") || [];
+        favsSaved.push(item);
+        setLocalStorage("so-favs", favsSaved);
     }
 }
