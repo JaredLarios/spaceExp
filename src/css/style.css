@@ -103,6 +103,14 @@ header {
   margin: 0 5px 13px 0;
 }
 
+.daily_fact a {
+  text-decoration: none;
+}
+
+#favCount {
+  color: white;
+}
+
 /* End Header Style */
 
 /* Icon Style*/
@@ -146,9 +154,22 @@ header {
   object-fit: contain;
 }
 
-.hero__buttons button {
-}
+
 /* End Hero style */
+
+/* Description style */
+.description {
+  display: flex;
+
+  width: 60%;
+  margin: 1rem auto;
+}
+
+.description__text {
+  padding: 1rem;
+}
+
+/* End Description style */
 
 /* Viewl List style */
 .viewlist {
@@ -222,3 +243,25 @@ header {
   border-radius: 20px;
 }
 /* End Mars Weather */
+
+/* Animatino Typing Style */
+.typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end),
+  blink-caret .75s step-end infinite;
+  border-right: .15em solid orange; 
+}
+/* End Animatino Typing Style */
+
+/* Animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+/* End Animation */

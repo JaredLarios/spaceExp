@@ -12,8 +12,5 @@ dateElement.textContent = new Date().toDateString();
 
 const imageListing = new ImagesListning(null, dataSource, galertyElement);
 
-
-//console.log(await service.getDailyPhoto());
-
 imageListing.renderSingle();
 loadHeaderFooter();
