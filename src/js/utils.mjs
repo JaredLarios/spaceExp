@@ -31,7 +31,7 @@ export async function loadTemplate(path) {
 
 function updateFavNumber() {
   const counter = document.querySelector("#favCount");
-  const number = getLocalStorage("count");
+  const number = getLocalStorage("so-favs").length || [];
   counter.textContent = number;
 }
 
