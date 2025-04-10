@@ -94,7 +94,9 @@ export default class ExternalServices {
 
   async getDailyPhoto() {
     try {
-      const response = await fetch(`${baseNasaURL}/planetary/apod?api_key=${nasaKey}`);
+      const response = await fetch(
+        `${baseNasaURL}/planetary/apod?api_key=${nasaKey}`,
+      );
       const data = await convertToJson(response);
       const dateId = new Date(data.date);
 
@@ -103,11 +105,11 @@ export default class ExternalServices {
         img_src: element.url,
         earth_date: element.date,
         camera: {
-          name: element.explanation
-        }
-      }))
+          name: element.explanation,
+        },
+      }));
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 }

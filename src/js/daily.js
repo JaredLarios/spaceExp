@@ -2,7 +2,6 @@ import ExternalServices from "./ExternalServices";
 import ImagesListning from "./ImageListning.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 
-
 const dataSource = new ExternalServices();
 
 const galertyElement = document.querySelector(".planet__gallery");
