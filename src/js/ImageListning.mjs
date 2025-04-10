@@ -1,12 +1,23 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { getLocalStorage, renderListWithTemplate, setLocalStorage } from "./utils.mjs";
 
 function imageCardTemaplate(element) {
+    const saved = checkIfSaved(element.id);
+
     return `
-        <div id="${element.id}-card" class="planet__card">
+        <div id="${element.id}" class="planet__card">
             <img src="${element.img_src}" alt="rover" class="rover__image" />
             <span class="rover__camara">${element.earth_date} - ${element.camera.name}</span>
+            ${saved ? 
+                `<span class="saved-badge">Saved</span>` :
+                `<button class="button save-btn" data-id="${element.id}">Save</button>`
+            }
         </div>
     `
+}
+
+function checkIfSaved(id) {
+    const saved = localStorage.getItem("so-favs");
+    return saved ? JSON.parse(saved).some(item => item.id === id) : false;
 }
 
 export default class ImagesListning {
@@ -20,6 +31,7 @@ export default class ImagesListning {
         this.parentElement = parentElement;
         this.template = template;
     }
+
     async init() {
         const myList = await this.dataSource.getPlanetPhotos(this.planet);
 
@@ -28,11 +40,30 @@ export default class ImagesListning {
         
         this.renderList(myList);
     }
+
     renderList(list) {
         renderListWithTemplate(this.template, this.parentElement, list);
+        this.addSaveListeners(list);
     }
+
     async renderSingle() {
         const data = await this.dataSource.getDailyPhoto();
-        renderListWithTemplate(this.template, this.parentElement, [data])
+        renderListWithTemplate(this.template, this.parentElement, [data]);
+        this.addSaveListeners([data]);
+    }
+
+    addSaveListeners(list) {
+        const listButtons = this.parentElement.querySelectorAll(".save-btn");
+
+        listButtons.forEach(button => {
+            button.addEventListener("click", (e) => {
+                const id = e.target.dataset.id;
+                const item = list.find(element => element.id === Number(id));
+                console.log(item);
+                /*
+                const favsSave = getLocalStorage("so-favs") || [];
+                setLocalStorage("so-favs", favsSave);*/
+            })
+        });
     }
 }

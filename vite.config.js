@@ -11,6 +11,7 @@ export default defineConfig({
         main: resolve(__dirname, "src/index.html"),
         mars: resolve(__dirname, "src/planet/index.html"),
         daily: resolve(__dirname, "src/daily/index.html"),
+        favs: resolve(__dirname, "src/favs/index.html"),
       },
     },
   },
