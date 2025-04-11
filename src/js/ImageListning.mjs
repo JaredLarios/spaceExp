@@ -68,5 +68,6 @@ export default class ImagesListning {
         const favsSaved = getLocalStorage("so-favs") || [];
         favsSaved.push(item);
         setLocalStorage("so-favs", favsSaved);
+        location.reload();
     }
 }
