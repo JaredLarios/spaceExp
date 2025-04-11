@@ -2,8 +2,8 @@ import { getLocalStorage, renderListWithTemplate, setLocalStorage } from "./util
 
 function cardTemaplate(element) {
   return `
-        <div id="${element.id}" class="planet__card">
-          <div>
+        <div id="${element.id}" class="planet__card saved__card">
+          <div class="saved__del-btn">
             <button class="button del-btn" data-id="${element.id}">Delete</button>
           </div>
             <img src="${element.img_src}" alt="rover" class="rover__image" />
