@@ -5,12 +5,14 @@ function imageCardTemaplate(element) {
 
     return `
         <div id="${element.id}" class="planet__card">
-            <img src="${element.img_src}" alt="rover" class="rover__image" />
-            <span class="rover__camara">${element.earth_date} - ${element.camera.name}</span>
+            <div class="planet__save">
             ${saved ? 
                 `<span class="saved-badge">Saved</span>` :
-                `<button class="button save-btn" data-id="${element.id}">Save</button>`
-            }
+                `<button class="button save-btn" data-id="${element.id}">Save</button>`}
+            </div>
+            <img src="${element.img_src}" alt="rover" class="rover__image" />
+            <span class="rover__camara">${element.earth_date} - ${element.camera.name}</span>
+
         </div>
     `
 }
@@ -68,5 +70,6 @@ export default class ImagesListning {
         const favsSaved = getLocalStorage("so-favs") || [];
         favsSaved.push(item);
         setLocalStorage("so-favs", favsSaved);
+        location.reload();
     }
 }

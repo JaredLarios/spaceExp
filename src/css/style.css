@@ -199,8 +199,14 @@ header {
 }
 
 .planet__card img {
+  padding-bottom: 1rem;
   max-height: 250px;
   object-fit: contain;
+}
+
+.planet__card .planet__save {
+  display: flex;
+  justify-content: end;
 }
 /* End Mars gallery */
 
@@ -242,6 +248,18 @@ header {
   border-radius: 20px;
 }
 /* End Mars Weather */
+
+/* Saved Images style */
+.saved__card .saved__del-btn {
+  display: flex;
+  justify-content: end;
+  padding-bottom: 1rem;
+}
+
+.saved__card .saved__del-btn .del-btn {
+  border-radius: 5px;
+}
+/* End Saved Images style */
 
 /* Animatino Typing Style */
 .typing {
