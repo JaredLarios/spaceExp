@@ -1,4 +1,8 @@
-import { getLocalStorage, renderListWithTemplate, setLocalStorage } from "./utils.mjs";
+import {
+  getLocalStorage,
+  renderListWithTemplate,
+  setLocalStorage,
+} from "./utils.mjs";
 
 function cardTemaplate(element) {
   return `
@@ -31,19 +35,21 @@ export default class SavedGallery {
   addDeleteListeners() {
     const listButtons = this.parentElement.querySelectorAll(".del-btn");
 
-    listButtons.forEach(button => {
-        button.addEventListener("click", (e) => {
-            const id = e.target.dataset.id;
-            this.deleteItem(id);
-        })
+    listButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const id = e.target.dataset.id;
+        this.deleteItem(id);
+      });
     });
   }
 
   deleteItem(id) {
     const favsSaved = getLocalStorage("so-favs") || [];
-    const updatedList = favsSaved.filter(element => element.id !== Number(id));
+    const updatedList = favsSaved.filter(
+      (element) => element.id !== Number(id),
+    );
 
-      setLocalStorage("so-favs", updatedList);
-      location.reload();
+    setLocalStorage("so-favs", updatedList);
+    location.reload();
   }
 }
